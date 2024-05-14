@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.core.io.Resource;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class MovieController {
@@ -25,15 +27,20 @@ public class MovieController {
 
     @PostMapping("/movies")
     public ResponseEntity<Movie> addMovie(@RequestParam("title") String title,
-                                          @RequestParam("image") MultipartFile image,
+                                          @RequestParam("images") List<MultipartFile> images,
                                           @RequestParam("trailer") MultipartFile trailer) {
         try {
-            String imageUrl = fileUploadUtil.uploadImage(image);
+            List<String> imageUrls = new ArrayList<>();
+            for (MultipartFile image : images) {
+                String imageUrl = fileUploadUtil.uploadImage(image);
+                imageUrls.add(imageUrl);
+            }
+
             String trailerUrl = fileUploadUtil.uploadTrailer(trailer);
 
             Movie movie = new Movie();
             movie.setTitle(title);
-            movie.setImageUrl(imageUrl);
+            movie.setImageUrls(imageUrls);
             movie.setTrailerUrl(trailerUrl);
 
             Movie createdMovie = movieService.createMovie(movie);
