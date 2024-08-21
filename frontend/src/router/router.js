@@ -2,7 +2,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import HomePage from '../components/HomePage.vue';
-import AddMovie from '../components/AddMovie.vue';
+import Movies from '../components/MoviesPage.vue';
 
 Vue.use(Router);
 
@@ -15,9 +15,9 @@ export default new Router({
       component: HomePage
     },
     {
-      path: '/add-movie',
-      name: 'AddMovie',
-      component: AddMovie
+      path: '/movies',
+      name: 'Movies',
+      component: Movies
     }
   ]
 });

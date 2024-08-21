@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>{{ msg }}</h1>
-    <router-link to="/add-movie" class="btn btn-primary">Add New Movie</router-link>
+    <router-link to="/movies" class="btn btn-primary">Add New Movie</router-link>
   </div>
 </template>
 

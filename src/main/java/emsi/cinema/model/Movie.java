@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Data
@@ -27,6 +28,9 @@ public class Movie {
     private List<String> imageUrls; // Danh sách URL của các ảnh
 
     private String trailerUrl;
+    private Timestamp timeCreate;
+
+
 }
 
 
