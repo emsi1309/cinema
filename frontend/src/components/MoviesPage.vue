@@ -84,9 +84,8 @@
         try{
           const response = await movieService.createMovie(formData);
             console.log('Movie added successfully:', response.data);
-            if (response.status === 201) {
-              console.log(response.status);
-            }
+            console.log(response.status);
+             await this.fetchMovies();
         }catch (error) {
             console.error('Failed to add movie:', error.message);
 
